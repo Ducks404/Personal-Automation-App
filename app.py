@@ -7,6 +7,8 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import logging
+import pywintypes
+from win10toast import ToastNotifier
 
 # Unzips zipfiles in Downloads folder that start with _
 class UnzipHandler(FileSystemEventHandler):    
@@ -23,6 +25,10 @@ class SortSchoolHandler(FileSystemEventHandler):
 class DownloadToSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
         downloadtoschool.main()
+
+# Toast notifier
+toast = ToastNotifier()
+toast.show_toast("Automation App", "The app has been started", duration=30)
 
 # configuring the log
 logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/app.log', 
