@@ -1,5 +1,4 @@
 import os
-import shutil
 
 def main(exclude = []):
     path = "C:/Users/Hp/Documents/dewa_stuff/School/"
@@ -15,9 +14,17 @@ def main(exclude = []):
 
     for file in files:
         if os.path.isfile(file) and file not in exclude:
-            print('found a school pdf')
-            shutil.move(f'{path}{file}', f'{path}{file}')
+            ext = (file.split(".")[-1]).lower()
+            if ext in pdf:
+                os.rename(f'{path}{file}', f'{path}PDF/{file}')
+            elif ext in images:
+                os.rename(f'{path}{file}', f'{path}Images/{file}')
+            elif ext in videos:
+                os.rename(f'{path}{file}', f'{path}Videos/{file}')
+            elif ext in audios:
+                os.rename(f'{path}{file}', f'{path}Audios/{file}')
+            else:
+                os.rename(f'{path}{file}', f'{path}Others/{file}')
 
 if __name__ == '__main__':
     main()
-    print('Done!')
