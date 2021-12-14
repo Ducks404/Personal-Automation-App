@@ -31,10 +31,10 @@ toast = ToastNotifier()
 toast.show_toast("Automation App", "The app has been started", duration=30)
 
 # Changing current directory
-os.chdir('C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/')
+os.chdir('C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation/')
 
 # configuring the log
-logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/app.log', 
+logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation/app.log', 
                     level=logging.INFO, 
                     format='<%(asctime)s> %(levelname)s : %(message)s',
                     datefmt = '%Y-%m-%d %H:%M:%S')
