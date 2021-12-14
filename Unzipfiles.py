@@ -46,7 +46,9 @@ def main(exclude=[]):
     print('main called')
     #print(files)
     
-    zips = ['zip', '7z', 'tar', 'gz']
+    zips = ['zip']
+    tar = ['tar', 'gz']
+    zip7 = ['7z']
 
     for file in files:
         if os.path.isfile(file) and file.startswith('_') and file not in exclude:
