@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from zipfile import ZipFile
+import tarfile
 import os
 import re
 import logging
@@ -36,6 +37,21 @@ def unzip(file_name):
     # deleting the zip file
     os.remove(file_name)
 
+def untar(file_name):
+    # making a folder
+    folder = file_name[1:-4]
+
+    # make a folder
+    folder = make_folder(folder)
+
+    # opening the tar file in READ mode
+    with tarfile.open(file_name) as tar:  
+        # extracting all the files
+        tar.extractall(folder)
+
+    # deleting the tar file
+    os.remove(file_name)
+
 def main(exclude=[]):
     # specifying the path to Downloads folder
     path = "C:/Users/Hp/Downloads"
@@ -59,7 +75,10 @@ def main(exclude=[]):
             if ext in zips:
                 #print(f'{file} is a zip file')
                 unzip(file)
-                logging.info(f"Extracted {file}")
+                logging.info(f"Zip extracted {file}")
+            elif ext in tar:
+                untar(file)
+                logging.info(f"Tar extracted {file}")
 
     print('loop finished')
 
