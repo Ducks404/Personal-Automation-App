@@ -2,6 +2,7 @@
 
 from zipfile import ZipFile
 import tarfile
+import py7zr
 import os
 import re
 import logging
@@ -52,6 +53,21 @@ def untar(file_name):
     # deleting the tar file
     os.remove(file_name)
 
+def unzip7(file_name):
+    # making a folder
+    folder = file_name[1:-4]
+
+    # make a folder
+    folder = make_folder(folder)
+
+    # opening the 7zip file in READ mode
+    with py7zr.SevenZipFile(file_name) as zip7:
+        # extracting all the files
+        zip7.extractall(folder)
+
+    # deleting the 7zip file
+    os.remove(file_name)
+
 def main(exclude=[]):
     # specifying the path to Downloads folder
     path = "C:/Users/Hp/Downloads"
@@ -79,6 +95,9 @@ def main(exclude=[]):
             elif ext in tar:
                 untar(file)
                 logging.info(f"Tar extracted {file}")
+            elif ext in zip7:
+                unzip7(file)
+                logging.info(f"7zip extracted {file}")
 
     print('loop finished')
 
