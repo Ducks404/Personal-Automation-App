@@ -22,10 +22,10 @@ class SortSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
         sortschool.main()
 
-# Moves files starting with Dean Agha to School folder
+# Moves files starting with {var.keyword} to School folder
 class DownloadToSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
-        downloadtoschool.main()
+        downloadtoschool.main(var.school_keyword)
 
 # Toast notifier
 toast = ToastNotifier()
