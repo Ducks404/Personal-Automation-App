@@ -75,7 +75,7 @@ def main(exclude=[]):
 
     # list all files in Downloads folder
     files = os.listdir('./')
-    print('main called')
+    #print('main called')
     #print(files)
     
     zips = ['zip']
@@ -99,7 +99,7 @@ def main(exclude=[]):
                 unzip7(file)
                 logging.info(f"7zip extracted {file}")
 
-    print('loop finished')
+    #print('loop finished')
 
 if __name__ == '__main__':
     main()
