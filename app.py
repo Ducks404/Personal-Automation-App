@@ -9,7 +9,7 @@ from watchdog.events import FileSystemEventHandler
 import logging
 
 class UnzipHandler(FileSystemEventHandler):    
-    def on_created(self, event):
+    def on_modified(self, event):
         time.sleep(1)
         Unzipfiles.main()
 
