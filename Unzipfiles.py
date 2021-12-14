@@ -6,6 +6,7 @@ import py7zr
 import os
 import re
 import logging
+import var
 
 def make_folder(folder):
     if not os.path.exists(folder):
@@ -70,7 +71,7 @@ def unzip7(file_name):
 
 def main(exclude=[]):
     # specifying the path to Downloads folder
-    path = "C:/Users/Hp/Downloads"
+    path = var.downloads
     os.chdir(path)
 
     # list all files in Downloads folder

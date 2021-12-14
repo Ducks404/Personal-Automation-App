@@ -3,6 +3,7 @@
 import Unzipfiles
 import downloadtoschool
 import sortschool
+import var
 import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -31,17 +32,17 @@ toast = ToastNotifier()
 toast.show_toast("Automation App", "The app has been started", duration=30)
 
 # Changing current directory
-os.chdir('C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation/')
+os.chdir(var.automation)
 
 # configuring the log
-logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation/app.log', 
+logging.basicConfig(filename=f'{var.automation}app.log', 
                     level=logging.INFO, 
                     format='<%(asctime)s> %(levelname)s : %(message)s',
                     datefmt = '%Y-%m-%d %H:%M:%S')
 
 # defining the folders to observe
-downloads = "C:/Users/Hp/Downloads"
-school = "C:/Users/Hp/Documents/dewa_stuff/School/"
+downloads = var.downloads
+school = var.school
 
 # initializing all handlers
 unzip_handler = UnzipHandler()

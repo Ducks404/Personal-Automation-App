@@ -1,10 +1,11 @@
 import os
 import logging
+import var
 
 def main(exclude = []):
     # Specifying source and target
-    source = "C:/Users/Hp/Downloads/"
-    target = 'C:/Users/Hp/Documents/dewa_stuff/School/'
+    source = var.downloads
+    target = var.school
 
     os.chdir(source)
 

@@ -1,8 +1,9 @@
 import os
 import logging
+import var
 
 def main(exclude = []):
-    path = "C:/Users/Hp/Documents/dewa_stuff/School/"
+    path = var.school
 
     os.chdir(path)
 
