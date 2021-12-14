@@ -60,6 +60,7 @@ watch_school = observer.schedule(school_handler, school, recursive=False)
 # starting the observer
 observer.start()
 #print('Started')
+logging.info('Started')
 
 try:
     while True:
