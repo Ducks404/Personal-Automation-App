@@ -10,13 +10,11 @@ import logging
 
 class UnzipHandler(FileSystemEventHandler):    
     def on_created(self, event):
-        #print(event.src_path)
         time.sleep(1)
         Unzipfiles.main()
 
 class SortSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
-        print(event.src_path)
         sortschool.main()
 
 class DownloadToSchoolHandler(FileSystemEventHandler):

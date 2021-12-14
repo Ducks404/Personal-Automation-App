@@ -1,4 +1,5 @@
 import os
+import logging
 
 def main(exclude = []):
     # Specifying source and target
@@ -14,6 +15,7 @@ def main(exclude = []):
         if file.startswith('Dean Agha') and os.path.isfile(file) and file not in exclude:
             #print('found a school file')
             os.rename(f'{source}{file}', f'{target}{file}')
+            logging.info(f'Moved {file} to School folder')
 
 if __name__ == '__main__':
     main()
