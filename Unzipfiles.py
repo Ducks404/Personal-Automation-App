@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from zipfile import ZipFile
+import zipfile
 import tarfile
 import py7zr
 import os
@@ -31,7 +31,7 @@ def unzip(file_name):
     folder = make_folder(folder)
 
     # opening the zip file in READ mode
-    with ZipFile(file_name, 'r') as zip:  
+    with zipfile.ZipFile(file_name, 'r') as zip:  
         # extracting all the files
         zip.extractall(folder)
 
@@ -84,7 +84,7 @@ def main(exclude=[]):
 
     for file in files:
         if os.path.isfile(file) and file.startswith('_') and file not in exclude:
-            print(f'{file} is file and startswith _')
+            #print(f'{file} is file and startswith _')
             ext = (file.split(".")[-1]).lower()
 
             # checking if file is a zip
