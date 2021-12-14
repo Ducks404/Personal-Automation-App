@@ -1,6 +1,6 @@
 How this automation folder works
 ========================
-The main script that is being run constantly in the background is **app.py**
+The main script that is being run constantly in the background is **app.pyw**
 All the other python scripts in here are being imported and called in the main script.
 
 When making a new automation module:
