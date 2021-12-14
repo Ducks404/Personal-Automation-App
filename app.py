@@ -7,7 +7,7 @@ import time
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import logging
-import pywintypes
+import os
 from win10toast import ToastNotifier
 
 # Unzips zipfiles in Downloads folder that start with _
@@ -29,6 +29,9 @@ class DownloadToSchoolHandler(FileSystemEventHandler):
 # Toast notifier
 toast = ToastNotifier()
 toast.show_toast("Automation App", "The app has been started", duration=30)
+
+# Changing current directory
+os.chdir('C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/')
 
 # configuring the log
 logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/app.log', 
