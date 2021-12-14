@@ -8,15 +8,18 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import logging
 
+# Unzips zipfiles in Downloads folder that start with _
 class UnzipHandler(FileSystemEventHandler):    
     def on_modified(self, event):
         time.sleep(1)
         Unzipfiles.main()
 
+# Sorts files in School folder
 class SortSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
         sortschool.main()
 
+# Moves files starting with Dean Agha to School folder
 class DownloadToSchoolHandler(FileSystemEventHandler):
     def on_modified(self, event):
         downloadtoschool.main()
