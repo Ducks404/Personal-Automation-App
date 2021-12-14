@@ -2,6 +2,8 @@ __pycache__
 
 app.log
 
-run_app.bat
+launch.bat
 
 run_app.vbs
+
+run_app.bat
