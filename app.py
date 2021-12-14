@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import Unzipfiles
+import downloadtoschool
 import sortschool
 import time
 from watchdog.observers import Observer
@@ -18,6 +19,10 @@ class SortSchoolHandler(FileSystemEventHandler):
         print(event.src_path)
         sortschool.main()
 
+class DownloadToSchoolHandler(FileSystemEventHandler):
+    def on_modified(self, event):
+        downloadtoschool.main()
+
 # configuring the log
 logging.basicConfig(filename='C:/Users/Hp/Documents/dewa_stuff/dewa_scripts/Automation tasks/app.log', 
                     level=logging.INFO, 
@@ -31,12 +36,15 @@ school = "C:/Users/Hp/Documents/dewa_stuff/School/"
 # initializing all handlers
 unzip_handler = UnzipHandler()
 school_handler = SortSchoolHandler()
+downloadtoschool_handler = DownloadToSchoolHandler()
 
 # initializing the observer
 observer = Observer()
 
 # scheduling all handlers
 watch_downloads = observer.schedule(unzip_handler, downloads, recursive=False)
+observer.add_handler_for_watch(downloadtoschool_handler, watch_downloads)
+
 watch_school = observer.schedule(school_handler, school, recursive=False)
 
 # starting the observer
