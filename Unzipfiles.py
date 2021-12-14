@@ -24,50 +24,24 @@ def make_folder(folder):
             folder = f'{folder}(2)'
         return make_folder(folder)
 
-def unzip(file_name):
-    # making a folder
-    folder = file_name[1:-4]
-
-    # make a folder
-    folder = make_folder(folder)
-
+def unzip(file_name, folder):
     # opening the zip file in READ mode
     with zipfile.ZipFile(file_name, 'r') as zip:  
         # extracting all the files
         zip.extractall(folder)
 
-    # deleting the zip file
-    os.remove(file_name)
-
-def untar(file_name):
-    # making a folder
-    folder = file_name[1:-4]
-
-    # make a folder
-    folder = make_folder(folder)
-
+def untar(file_name, folder):
     # opening the tar file in READ mode
     with tarfile.open(file_name) as tar:  
         # extracting all the files
         tar.extractall(folder)
 
-    # deleting the tar file
-    os.remove(file_name)
-
-def unzip7(file_name):
-    # making a folder
-    folder = file_name[1:-4]
-
-    # make a folder
-    folder = make_folder(folder)
-
+def unzip7(file_name, folder):
     # opening the 7zip file in READ mode
     with py7zr.SevenZipFile(file_name) as zip7:
         # extracting all the files
         zip7.extractall(folder)
 
-    # deleting the 7zip file
-    os.remove(file_name)
 
 def main(exclude=[]):
     # specifying the path to Downloads folder
@@ -88,17 +62,28 @@ def main(exclude=[]):
             #print(f'{file} is file and startswith _')
             ext = (file.split(".")[-1]).lower()
 
-            # checking if file is a zip
-            if ext in zips:
-                #print(f'{file} is a zip file')
-                unzip(file)
-                logging.info(f"Zip extracted {file}")
-            elif ext in tar:
-                untar(file)
-                logging.info(f"Tar extracted {file}")
-            elif ext in zip7:
-                unzip7(file)
-                logging.info(f"7zip extracted {file}")
+            # checking if file is a compressed file
+            if ext in zips + tar + zip7:
+                print('compressed file found')
+                # making a folder
+                folder = file[1:-4]
+
+                # make a folder
+                folder = make_folder(folder)
+
+                if ext in zips:
+                    #print(f'{file} is a zip file')
+                    unzip(file, folder)
+                    logging.info(f"Zip extracted {file}")
+                elif ext in tar:
+                    untar(file, folder)
+                    logging.info(f"Tar extracted {file}")
+                elif ext in zip7:
+                    unzip7(file, folder)
+                    logging.info(f"7zip extracted {file}")
+                
+                # deleting the compressed file
+                os.remove(file)
 
     #print('loop finished')
 
