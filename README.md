@@ -14,6 +14,6 @@ All the other python scripts in here are being imported and called in the main s
 
 ### To end the automation app:
 1. Open Command Line
-2. Enter this command ```tasklist /FI "IMAGENAME eq wscript.exe"```
-3. Find the PID
+2. Enter this command ```wmic process where caption="wscript.exe" get commandline,processid```
+3. Make sure it is the right task
 4. Enter this command ```taskkill /F /PID {The tasks's PID}```
