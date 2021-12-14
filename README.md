@@ -5,7 +5,7 @@ All the other python scripts in here are being imported and called in the main s
 
 ### To set up:
 1. ```git pull``` this repository into a folder
-2. [Add](#var.py) a ```var.py``` file to store the paths and keywords
+2. [Add](#varpy) a ```var.py``` file to store the paths and keywords
 3. Run ```run_app.pyw``` at startup
 
 ### To end the automation app:
